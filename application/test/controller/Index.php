@@ -8,7 +8,7 @@ use parasol\Task;
 use parasol\BallShop;
 use think\Controller;
 
-//继承接口是需要快捷方法
+//继承接口
 class Index extends Controller implements DataEdit
 {
     /**
