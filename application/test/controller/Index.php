@@ -3,21 +3,53 @@
 namespace app\test\controller;
 
 
+use parasol\DataEdit;
 use parasol\Task;
 use parasol\BallShop;
+use think\Controller;
 
-class Index
+//继承接口是需要快捷方法
+class Index extends Controller implements DataEdit
 {
-
-    public function index()
+    /**
+     * @return mixed
+     */
+    public function lists_index()
     {
-//        $task = new Task();
-//        $task->test();
-//        unset($task);
-
-
-        $BallShop = new BallShop();
-        $BallShop->open();
+        // TODO: Implement lists_index() method.
     }
+
+    /**
+     * @return mixed
+     */
+    public function lists()
+    {
+        // TODO: Implement lists() method.
+    }
+
+    /**
+     * @return mixed
+     */
+    public function add_index()
+    {
+        // TODO: Implement add_index() method.
+    }
+
+    /**
+     * @return mixed
+     */
+    public function del()
+    {
+        // TODO: Implement del() method.
+    }
+
+    /**
+     * @return mixed
+     */
+    public function edit()
+    {
+        // TODO: Implement edit() method.
+    }
+
 
 }
