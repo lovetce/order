@@ -1,0 +1,32 @@
+<!-- 底部开始 -->
+<div class="footer">
+    <div class="copyright">Copyright ©2018 WeAdmin v1.0 All Rights Reserved</div>
+</div>
+<!-- 底部结束 -->
+<script>
+    layui.config({
+        base: '/static/WeAdmin/static/js/'
+        , version: '101100'
+    }).extend({ //设定模块别名
+        admin: 'admin'
+        , menu: 'menu'
+    });
+    layui.use(['jquery', 'admin', 'menu'], function () {
+        var $ = layui.jquery,
+            admin = layui.admin,
+            menu = layui.menu;
+        $(function () {
+            menu.getMenu('/static/WeAdmin/json/menu.json'); //加载菜单
+        });
+    });
+</script>
+</body>
+<!--Tab菜单右键弹出菜单-->
+<ul class="rightMenu" id="rightMenu">
+    <li data-type="fresh">刷新</li>
+    <li data-type="current">关闭当前</li>
+    <li data-type="other">关闭其它</li>
+    <li data-type="all">关闭所有</li>
+</ul>
+
+</html>
