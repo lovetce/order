@@ -4,16 +4,16 @@
 namespace app\admin\controller;
 
 
+use parasol\DataEdit;
 use think\Db;
 use think\db\Where;
 use think\Validate;
 
-class Member extends Base
+class Member extends Base implements DataEdit
 {
     public function lists_index()
     {
         return $this->fetch();
-
     }
 
     public function lists()
@@ -114,6 +114,11 @@ class Member extends Base
         }
 
 
+    }
+
+    public function getpost()
+    {
+        return 1;
     }
 
 }
