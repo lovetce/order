@@ -13,4 +13,9 @@ class Base extends Controller
     {
 
     }
+
+    public function task()
+    {
+
+    }
 }
