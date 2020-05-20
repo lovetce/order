@@ -43,9 +43,12 @@ class Member extends Base implements DataEdit
     public function add_index()
     {
         $id = request()->get('id');
+        if (!empty($id)) {
+            $data = Db::name('member')->where(array('id' => $id))->find();
+        }
 
 //        $html = $this->fetch()->getContent();
-        return $this->fetch('', array('id' => $id))->getContent();
+        return $this->fetch('', array('data' => isset($data) ? $data : array()))->getContent();
 
     }
 
