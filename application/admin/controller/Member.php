@@ -24,7 +24,9 @@ class Member extends Base implements DataEdit
         $where = array();
 
 
-        !empty($keyword) ? $where['account'] = ['like', '%' . $keyword . '%'] : '';
+        !empty($keyword) ? $where = [
+            ['account', 'like', '%' . $keyword . '%'],
+        ] : '';
 
 
         $member_data = Db::name('member')->where($where)->where(array(

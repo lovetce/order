@@ -4,24 +4,10 @@
 
 
         <div class="layui-form-item">
-            <label class="layui-form-label"><span class="we-red">*</span>姓名</label>
+            <label class="layui-form-label"><span class="we-red">*</span>类别名称</label>
             <div class="layui-input-block">
-                <input type="text" lay-verify="required" name="username" value="{$data['username']|default=''}"
+                <input type="text" lay-verify="required" name="type_name" value="{$data['type_name']|default=''}"
                        autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label"><span class="we-red">*</span>密码</label>
-            <div class="layui-input-block">
-                <input type="password" lay-verify="required" name="password" value="{$data['password']|default=''}"
-                       autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">单选框</label>
-            <div class="layui-input-block">
-                <input type="radio" name="sex" value="男" title="男" checked="">
-                <input type="radio" name="sex" value="女" title="女">
             </div>
         </div>
 
@@ -43,9 +29,10 @@
         form.render();
         //监听提交
         form.on('submit(add)', function (data) {
+
             $.ajax({
                 type: 'post',
-                url: '/member/edit',
+                url: '/goods_type/edit',
                 data: data.field,
                 success: function (res) {
                     if (res.code == 200) {
