@@ -1,12 +1,10 @@
 <div class="weadmin-body">
     <form class="layui-form">
         <input type="hidden" name="id" value="{$data['id']|default=''}">
-
-
         <div class="layui-form-item">
             <label class="layui-form-label"><span class="we-red">*</span>姓名</label>
             <div class="layui-input-block">
-                <input type="text" lay-verify="required" name="username" value="{$data['username']|default=''}"
+                <input type="text" lay-verify="required" name="username" value="{$data['account']|default=''}"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
@@ -36,6 +34,7 @@
 </div>
 <script>
     layui.use(['form', 'layer', 'table'], function () {
+        $("input:radio[value='{$data['sex']|default=''}']").attr('checked', 'true');  //radio设置选中值
         var form = layui.form,
             layer = layui.layer,
             table = layui.table;
