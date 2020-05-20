@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>列表</title>
+    <meta name="Description" content="基于layUI数据表格操作"/>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/static/css/font.css">
+    <link rel="stylesheet" href="/static/css/weadmin.css">
+    <link rel="stylesheet" href="/lib/layui2.5/dist/css/layui.css">
+    <link rel="stylesheet" href="/lib/layui2.5/dist/css/eleTree.css" media="all">
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        .layui-form-switch {
+            width: 55px;
+        }
+
+        .layui-form-switch em {
+            width: 40px;
+        }
+
+        body {
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<div class="weadmin-body">
+    <div id="city"></div>
+
+</div>
+<button type="button" class="layui-btn layui-btn-radius layui-btn-normal edit">提交</button>
+</body>
+
+<script src="/lib/layui2.5/dist/layui.js" charset="utf-8"></script>
+<script src="/lib/layui2.5/dist/eleTree.js" charset="utf-8"></script>
+<script src="/static/js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+
+
+<script>
+    var edit_url = '/city/edit';
+    var lists = '/city/lists';
+
+    layui.config({
+        base: "/lib/layui2.5/dist/"
+    }).use(['eleTree', 'layer'], function () {
+        var eleTree = layui.eleTree;
+        var layer = layui.layer;
+        var data = {$city | raw
+    }
+
+        //渲染
+        var el = eleTree.render({
+            elem: '#city',
+            data: data,
+            contextmenuList: ["add", "edit", "remove"]
+        });
+        $('.edit').on('click', function () {
+            var all_data = el.getAllNodeData();
+            //获取数据，并转为json
+            $.post(edit_url, {data: JSON.stringify(all_data)}, function (res) {
+                if (res.code == 200) {
+                    layer.msg(res.msg, {icon: 1, time: 1000});
+                    return false;
+                }
+                layer.msg(res.msg, {icon: 9});
+
+            })
+
+
+        })
+
+
+    });
+
+</script>
+</body>
+</html>
